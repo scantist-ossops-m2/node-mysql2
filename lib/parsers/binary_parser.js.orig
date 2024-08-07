@@ -39,9 +39,9 @@ function readCodeFor(field, config, options, fieldNum) {
     case Types.TIMESTAMP:
     case Types.NEWDATE:
       if (helpers.typeMatch(field.columnType, dateStrings, Types)) {
-        return `packet.readDateTimeString(${parseInt(field.decimals, 10)});`;
+        return `packet.readDateTimeString(${field.decimals});`;
       }
-      return `packet.readDateTime(${helpers.srcEscape(timezone)});`;
+      return `packet.readDateTime('${timezone}');`;
     case Types.TIME:
       return 'packet.readTimeString()';
     case Types.DECIMAL:
